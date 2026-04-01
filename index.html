@@ -784,8 +784,11 @@ function answerTF(userAnswer, isCorrect) {
   const btns = document.querySelectorAll('.tf-btn');
   btns.forEach(b => b.classList.add('locked'));
   // find correct btn
-  btns[0].classList.add(isCorrect === (userAnswer===true) ? 'correct-ans' : (userAnswer===true ? 'wrong-ans' : ''));
-  btns[1].classList.add(isCorrect === (userAnswer===false) ? 'correct-ans' : (userAnswer===false ? 'wrong-ans' : ''));
+  const c1 = isCorrect === (userAnswer===true) ? 'correct-ans' : (userAnswer===true ? 'wrong-ans' : '');
+  const c2 = isCorrect === (userAnswer===false) ? 'correct-ans' : (userAnswer===false ? 'wrong-ans' : '');
+ 
+  if (c1) btns[0].classList.add(c1);
+  if (c2) btns[1].classList.add(c2);
   // Actually: userAnswer is what the user picked; isCorrect is whether that choice is right
   btns.forEach(b => b.onclick = null);
   // Simpler: re-derive
